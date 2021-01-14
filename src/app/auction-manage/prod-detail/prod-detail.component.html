@@ -1,0 +1,28 @@
+<div>
+  <img
+        class="card-img-top"
+        src="https://picsum.photos/800/300?random=2"
+        alt="Card image cap"
+      />
+      <p class="pull-right">{{product.product_price}}元</p>
+      <p>{{product.product_name}}</p>
+      <p>my product id is {{ prodId }}</p>
+      <p>{{product.product_desc}}</p>
+      <app-stars [rating]="product.product_rating"></app-stars>
+</div>
+<div class="thumbnail">
+  <div class="comment-box">
+    <button class="btn btn-primary" (click)="isCommentShow = !isCommentShow">發表評論</button>
+    <div *ngIf="isCommentShow">
+      <textarea [(ngModel)]="newComment"></textarea>
+      <app-stars [(rating)]="newRating" [isCommenting]="true"></app-stars>
+      <button class="btn btn-primary" (click)="submitComment()">提交評論</button>
+    </div>
+  </div>
+  <div *ngFor="let comment of commentList">
+    <p class="pull-right">{{comment.date}}</p>
+    <p>{{comment.user}}</p>
+    <p>{{comment.comment}}</p>
+    <app-stars [rating]="comment.rating"></app-stars>
+  </div>
+</div>

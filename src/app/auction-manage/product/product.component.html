@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <input type="text" class="form-control" [formControl]="titleSearch">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 col-md-4"  *ngFor="let product of productList | filter:'product_name':keyword">
+    <div class="card">
+      <img
+        class="card-img-top"
+        src="https://picsum.photos/200/300?random=2"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><a [routerLink]="['homepage',product.product_id]">{{ product.product_name }}</a></h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          {{ product.product_price }}
+        </h6>
+        <p class="card-text">{{ product.product_desc }}</p>
+        <p class="card-text"><app-stars [rating]="product.product_rating"></app-stars></p>
+      </div>
+    </div>
+  </div>
+</div>

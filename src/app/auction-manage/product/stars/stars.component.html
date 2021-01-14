@@ -1,0 +1,8 @@
+<p>
+  <fa-icon
+    [icon]="star ? ['fas', 'star'] : ['far', 'star']"
+    *ngFor="let star of stars; index as i"
+    (click)="onRating(i)"
+  ></fa-icon>
+  <span>{{ rating | number:'1.0-2' }}</span>
+</p>
